@@ -34,7 +34,7 @@ class ErrorBoundary extends React.Component {
                             <RotateCcw size={20} />
                             অাবার চেষ্টা করুন
                         </button>
-                        {process.env.NODE_ENV === 'development' && (
+                        {import.meta.env.MODE === 'development' && (
                             <div className="mt-8 text-left bg-slate-50 p-4 rounded-lg overflow-auto max-h-40">
                                 <p className="text-xs font-mono text-red-500 whitespace-pre">
                                     {this.state.error && this.state.error.toString()}

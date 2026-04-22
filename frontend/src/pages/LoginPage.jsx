@@ -21,7 +21,7 @@ const LoginPage = () => {
         e.preventDefault();
         setError('');
 
-        const success = await login(id, password);
+        const success = await login({ username: id, password });
         if (!success) {
             setError(loginError || 'ভুল আইডি বা পাসওয়ার্ড। আবার চেষ্টা করুন।');
         }
