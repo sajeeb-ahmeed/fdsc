@@ -90,7 +90,7 @@ const LoginPage = () => {
                     <div className="mt-8 text-center">
                         <p className="text-slate-400 text-xs">
                             ডেমো এক্সেস:<br />
-                            Admin: admin / admin<br />
+                            Admin: admin / admin123<br />
                             Member: M-101 / 123
                         </p>
                     </div>
