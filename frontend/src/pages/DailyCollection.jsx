@@ -155,10 +155,25 @@ const DailyCollection = () => {
                 setShowSuccess(true);
                 setTimeout(() => setShowSuccess(false), 2500);
             } else {
-            }) : null;
+                toast.error('কালেকশন ব্যর্থ হয়েছে।');
+            }
+        } else {
+            toast.error('এই লেনদেনের ধরন এখনো সংযুক্ত করা হয়নি। (Not implemented yet)');
+        }
+    };
 
-            if (loading && sMembers.length === 0) return <LoadingSpinner />;
-            if (error && sMembers.length === 0) return <ErrorBanner message={error} onRetry={fetchMembers} />;
+    const memberLoan = selectedMember ? sCreditPurchases.find(cp => {
+        const loanMemberId = typeof cp.member === 'object' ? cp.member?._id : cp.member;
+        return loanMemberId === selectedMember._id && cp.status === 'ACTIVE';
+    }) : null;
+
+    const memberDps = selectedMember ? sDps.find(d => {
+        const dpsMemberId = typeof d.member === 'object' ? d.member?._id : d.member;
+        return dpsMemberId === selectedMember._id && d.status === 'ACTIVE';
+    }) : null;
+
+    if (loading && sMembers.length === 0) return <LoadingSpinner />;
+    if (error && sMembers.length === 0) return <ErrorBanner message={error} onRetry={fetchMembers} />;
 
             return (
                 <div className="max-w-xl mx-auto pb-24">
